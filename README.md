@@ -1,11 +1,6 @@
 MACHINE LEARNING MINI PROJECT
 
 
-BY:
-UCE2022453 : Rutuja Dhirde
-UCE2022456 : Divya Ganeshwala
-
-
 PROBLEM STATEMENT :  The goal of this project is to employ machine learning techniques for sentiment analysis, specifically targeting tweets. Sentiment analysis involves determining whether a given tweet expresses a positive, negative, or neutral sentiment. 
 
 
