@@ -1,116 +1,73 @@
-MACHINE LEARNING MINI PROJECT
+# Twitter Sentiment Analysis Using Machine Learning
 
+## Problem Statement
 
-PROBLEM STATEMENT :  The goal of this project is to employ machine learning techniques for sentiment analysis, specifically targeting tweets. Sentiment analysis involves determining whether a given tweet expresses a positive, negative, or neutral sentiment. 
+The goal of this project is to develop a sentiment analysis model for Twitter data, specifically focusing on classifying tweets into three sentiment categories: **Positive**, **Negative**, and **Neutral**. Sentiment analysis on Twitter data is essential for understanding public opinions, trends, and feedback.
 
+## Introduction
 
-INTRODUCTION: In today's digital age, the rapid dissemination of information through social media platforms like Twitter has become ubiquitous. Users rely on these platforms for news and updates, making them powerful tools for understanding public sentiment. However, alongside genuine content, social media is flooded with tweets expressing diverse emotions ranging from positivity to negativity. Analysing this sentiment can offer valuable insights into public perception, brand sentiment, and social trends. Moreover, as elections loom closer, the analysis of tweets becomes even more critical, providing a lens into public sentiment towards political figures and parties. By examining the sentiments expressed in tweets, we can gain a deeper understanding of people's opinions, preferences, and concerns, thus informing political strategies and public discourse.
+In the digital era, social media platforms like Twitter play a vital role in shaping public opinion. Twitter is a hub of diverse emotions and opinions, which makes it an excellent source for analyzing the sentiment of individuals on various topics. By understanding how people feel about political events, products, or global issues, we can provide businesses, political leaders, and organizations with valuable insights for better decision-making.
 
+This project leverages **machine learning techniques** to perform sentiment analysis on Twitter data, helping to understand the general mood or opinion expressed in the tweets.
 
-DATASET INFORMATION :  
-Twitter Sentiment Analysis Dataset
+## Dataset Information
 
+The dataset used for this project is the **Twitter Sentiment Analysis Dataset**, which consists of labeled tweet data with the sentiment labeled as **positive**, **negative**, or **neutral**. This dataset helps in training machine learning models to recognize sentiment based on tweet content.
 
-AIM : To develop a sentiment analysis model using machine learning techniques tailored for Twitter data.
+### Dataset Columns:
+- `tweet`: Contains the text of the tweet.
+- `sentiment`: Sentiment label of the tweet (`positive`, `negative`, `neutral`).
 
-The Natural Language Toolkit (NLTK) :  A platform used for building Python programs that work with human language data for application in statistical natural language processing (NLP). It contains text processing libraries for tokenization, parsing, classification, stemming, tagging and semantic reasoning.
+## Tools and Libraries Used
 
-STOP WORDS : Stop words are common words like ‘the’, ‘and’, ‘I’, etc. that are very frequent in text, and so don’t convey insights into the specific topic of a document. We can remove these stop words from the text in a given corpus to clean up the data, and identify words that are more rare and potentially more relevant to what we’re interested in.
-Text may contain stop words like ‘the’, ‘is’, ‘are’. Stop words can be filtered from the text to be processed.
-There is no universal list of stop words in nlp research, however the nltk module contains a list of stop words.
+- **Natural Language Toolkit (NLTK)**: A Python library for processing and analyzing human language data. It is used for text preprocessing tasks such as tokenization, stop words removal, and lemmatization.
+- **Pandas**: A powerful data manipulation and analysis library, used to load, clean, and process the dataset.
+- **Scikit-learn**: A machine learning library used to implement various algorithms, including Multinomial Naive Bayes and Random Forest Classifier.
+- **Matplotlib**: A library used for creating visualizations, such as graphs and charts.
+- **WordCloud**: A visualization tool that generates word clouds from text data, representing the frequency of words.
 
-WordNet Lemmatizer:  Often referred to simply as the WordNet Lemmatizer, is a tool commonly used in NLP tasks. Its primary function is to reduce words to their base or root form, known as the lemma. For example, the lemma of the word "running" is "run," and the lemma of "better" is "good."
-The main purpose of lemmatization is to normalize words so that variations of the same word are treated as the same token, which can improve the accuracy and efficiency of machine learning algorithms.
+## Approach
 
-Preprocess_text:
-I/P  —>  text = "Hello, World! This is an example text with @symbols and\newlines."
-O/P  —>  hello world this is an example text with symbols and newlines
+1. **Data Preprocessing**:
+   - Tokenization: Break the tweet text into smaller units (words).
+   - Stop Word Removal: Eliminate common words like 'the', 'is', 'and', etc., that do not contribute significant meaning.
+   - Lemmatization: Convert words to their base or root form (e.g., "running" → "run").
 
-PUNKET: The 'punkt' resource refers to the Punkt tokenizer models provided by NLTK. Tokenization is the process of breaking text into smaller units, typically words or sentences, which are called tokens. The Punkt tokenizer is a pre-trained tokenizer that can tokenize text into sentences or words. It is particularly useful for tasks such as text segmentation, where you need to divide a paragraph into individual sentences.
+2. **Vectorization**:
+   - We use **CountVectorizer** from scikit-learn to convert the processed tweet text into a numerical format that can be fed into machine learning models.
 
+3. **Sentiment Classification**:
+   - **Multinomial Naive Bayes**: This algorithm is ideal for text classification tasks and works by estimating the likelihood of each class (positive, negative, or neutral) based on the word counts.
+   - **Random Forest Classifier**: A powerful ensemble learning algorithm that builds multiple decision trees to classify data based on majority voting.
 
-COUNTVECTORIZER:
-Ex – food is good but food is not good
+4. **Visualization**:
+   - **Word Cloud**: Visualizes the most frequent words from positive, negative, and neutral tweets to understand common themes and topics.
 
-Tokenized version of the sentence:
-["the", "food", "is", "good", "but", "food", "is", "not", "good"]
+## Results
 
-Vocabulary:
-{'the': 0, 'food': 1, 'is': 2, 'good': 3, 'but': 4, 'not': 5}
+- The **Random Forest Classifier** achieved **92%** accuracy in predicting tweet sentiment.
+- The **Multinomial Naive Bayes** classifier performed well with an accuracy of **79%**.
+- Word cloud visualizations revealed common words associated with each sentiment category, helping to identify popular themes in the tweets.
 
-Count matrix:
-|    | the | food | is | good | but | not |
-|----|-----|------|----|------|-----|-----|
-| 0  | 1   | 1    | 2  | 2    | 1   | 0   |
-| 1  | 1   | 2    | 2  | 1    | 1   | 1   |
+### Example Word Cloud Visualization:
+The word clouds for positive, negative, and neutral tweets provide insight into what words are frequently associated with each sentiment. Positive tweets often contain words like "good", "happy", and "love", while negative tweets frequently mention words like "bad", "hate", and "disappointed".
 
-CSR format representation:
-(0, 0) 1
-(0, 1) 1
-(0, 2) 2
-(0, 3) 2
-(0, 4) 1
-(1, 0) 1
-(1, 1) 2
-(1, 2) 2
-(1, 3) 1
-(1, 4) 1
-(1, 5) 1
+## Conclusion
 
+This project demonstrates how machine learning techniques can be used to perform sentiment analysis on Twitter data. By utilizing preprocessing techniques such as tokenization, stop word removal, and lemmatization, combined with powerful classifiers like Random Forest and Naive Bayes, we were able to accurately predict tweet sentiments with high precision.
 
+Additionally, the word cloud visualizations give a deeper understanding of the emotions expressed in tweets and highlight popular terms in different sentiment categories.
 
+## References
 
+1. **Naive Bayes** — [scikit-learn 1.4.2 documentation](https://scikit-learn.org/stable/modules/naive_bayes.html)
+2. **Random Forest Classifier** — [scikit-learn 1.4.2 documentation](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
+3. **NLTK** — [Natural Language Toolkit Documentation](https://www.nltk.org/)
+4. **WordCloud** — [WordCloud Documentation](https://github.com/amueller/word_cloud)
 
+## Installation
 
+To run this project, you will need to install the following Python libraries:
 
-O/P:
-
-
-MULTINOMIALNB:
-y_train[0]: "Positive"                                                                       
-y_train[1]: "Negative"
-y_train[2]: "Positive"
-
-X_train[0]: "i am good"
-X_train[1]: "food is bad"
-X_train[2]: "drink is cool"
-
-(0, 0)    1  # "am" appears once in the first document
-(0, 1)    1  # "good" appears once in the first document
-(0, 2)    1  # "i" appears once in the first document
-(1, 3)    1  # "bad" appears once in the second document
-(1, 4)    1  # "food" appears once in the second document
-(1, 5)    1  # "is" appears once in the second document
-(2, 6)    1  # "cool" appears once in the third document
-(2, 5)    1  # "drink" appears once in the third document
-(2, 7)    1  # "is" appears once in the third document
-
-Multinomial Naive Bayes classifies text by representing documents as word count vectors, assuming independence between words. It estimates class priors and conditional probabilities from training data. During classification, it calculates posterior probabilities for each class using Bayes' theorem and selects the class with the highest probability. It handles unseen words through techniques like Laplace smoothing. Overall, it's efficient for text classification due to its simplicity and effectiveness in dealing with high-dimensional feature spaces.
-
-
-
-WORD CLOUD:
-A word cloud is a visualization technique that displays the frequency of words in a text data set, where the size of each word represents its frequency. It's commonly used to quickly identify the most prominent terms in a corpus and their relative importance. Word clouds are visually appealing and useful for gaining insights into the main themes or topics within a collection of documents. 
-
-USING RANDOM FOREST CLASSIFIER:
-
-
-CONCLUSION:
-Our sentiment analysis project delves into the world of Twitter discussions, utilising a mix of powerful computer techniques to understand the emotions behind tweets. We carefully prepared and organised the tweet data, then trained a special computer model called RandomForestClassifier. This model is very accurate, correctly predicting feelings in tweets 92% of the time!
-Also we use Naive Bayes classifier which gives accuracy upto 79%
-
-But our project goes beyond just guessing feelings. We also create colourful word cloud pictures to show which words are most common in positive, negative, or neutral tweets. These pictures help us see what topics people often talk about when they're feeling different emotions.
-
-Overall, our project not only helps us understand feelings in tweets better but also gives us insights into digital sentiment trends. By using these techniques, we can make smarter decisions and better understand what's happening in the online world.
-
-
-REFERENCES : 
-1.9. Naive Bayes — scikit-learn 1.4.2 documentation
-sklearn.ensemble.RandomForestClassifier — scikit-learn 1.4.2 documentation
-
-Colab link:
-final.ipynb
-
-
-
-
+```bash
+pip install nltk sklearn matplotlib wordcloud pandas
